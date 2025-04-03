@@ -15,3 +15,7 @@
   grid-area: b;
   background-color: darkgoldenrod;
 }
+
+.active {
+  color: gold;
+}

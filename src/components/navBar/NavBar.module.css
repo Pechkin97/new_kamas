@@ -3,6 +3,12 @@
     background-color: chartreuse;
 }
 
-.item {
-    color: darkblue;
+.item a{
+    color: blue;
 }
+
+.item a.active{
+    color: gold;
+}
+
+
