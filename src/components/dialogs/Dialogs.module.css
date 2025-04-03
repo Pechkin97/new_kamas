@@ -7,12 +7,16 @@
     padding: 10px;
 }
 
-.dialogsNames .active {
-    color: gold;
+
+
+.dialogsNamesItem a{
+    color: blue;
+    text-decoration: none;
 }
 
-.dialogsNamesItem {
-    color: blue;
+.dialogsNamesItem a.active{
+    color: gold;
+    text-decoration: none;
 }
 
 .dialogsMassages {

@@ -9,6 +9,10 @@ const MyPost = (props: any) => {
         {id: 2, massage: "It's my first post!", likesCount: 3}
     ]
 
+    let postsElements = postsData.map((el,pos) =>
+        <Post key={pos} message={el.massage} likesCount={el.likesCount}/>
+    )
+
     return (
         <div className={s.myPost}>
             <h5>My post</h5>
@@ -17,8 +21,7 @@ const MyPost = (props: any) => {
                 <button>Add post</button>
             </div>
             <div className={s.posts}>
-                <Post message={postsData[0].massage} likesCount={postsData[0].likesCount}/>
-                <Post message={postsData[1].massage} likesCount={postsData[1].likesCount}/>
+                {postsElements}
             </div>
         </div>
     )

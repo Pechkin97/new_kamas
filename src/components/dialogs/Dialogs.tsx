@@ -6,7 +6,7 @@ const DialogsNamesItem = (props: any) => {
     let path = "/dialogs/" + props.id
     return (
         <div className={s.dialogsNamesItem}>
-            <NavLink to={path}>{props.name}</NavLink>
+            <NavLink to={path} className={({isActive}) => isActive ? s.active : ""}>{props.name}</NavLink>
         </div>
     )
 }
@@ -19,7 +19,7 @@ const DialogsMassagesItem = (props: any) => {
     )
 }
 
-const Dialogs = (props: any) => {
+const Dialogs = () => {
 
     let dialogsData = [
         {id: 1, name: 'Peter'},
@@ -30,6 +30,10 @@ const Dialogs = (props: any) => {
         {id: 6, name: 'Pavel'}
     ]
 
+    let dialogsElements = dialogsData.map((el,pos) =>
+        <DialogsNamesItem key={pos} name={el.name} id={el.id} />
+    )
+
     let massagesData = [
         {id: 1, massage: 'Hello'},
         {id: 2, massage: 'I am learning React NOW!'},
@@ -37,18 +41,18 @@ const Dialogs = (props: any) => {
         {id: 4, massage: 'Be happy )'}
     ]
 
+    let DialogsMassagesElemets = massagesData.map((el,pos) =>
+        <DialogsMassagesItem key={pos} massage={el.massage}/>
+    )
+
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsNames}>
-                {dialogsData.map((el) =>
-                    <DialogsNamesItem name={el.name} id={el.id}/>
-                )}
+                {dialogsElements}
 
             </div>
             <div className={s.dialogsMassages}>
-                {massagesData.map((el) =>
-                    <DialogsMassagesItem massage={el.massage}/>
-                )}
+                {DialogsMassagesElemets}
             </div>
         </div>
     )
