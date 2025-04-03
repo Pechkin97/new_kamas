@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import './App.css';
 import Header from "./components/header/Header";
 import NavBar from "./components/navBar/NavBar";
@@ -13,7 +13,7 @@ function App() {
             <NavBar/>
             <div className="app-wrapper-content">
                 <Routes>
-                    <Route path='/dialogs' element={<Dialogs/>}/>
+                    <Route path='/dialogs/*' element={<Dialogs/>}/>
                     <Route path='/profile' element={<Profile/>}/>
                 </Routes>
             </div>

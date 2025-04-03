@@ -1,21 +1,22 @@
+{box-sizing: border-box; /* Чёткость в размерах */
+padding: 0; /* Без лишних нагрузок */
+margin: 0;}
+
 .app-wrapper {
-  width: 100%;
-  height: 100%;
-  margin: 0 auto;
   display: grid;
+  min-height: 98vh;
+  width: 98vw;
+  padding-block: 1vh;
+  padding-inline: 1vw;
+  grid-gap: 1vh;
   grid-template-areas:
           "h h"
           "n b";
   grid-template-rows: 100px 1fr;
-  grid-template-columns: 2fr 8fr;
-  grid-gap: 5px;
+  grid-template-columns: 100px 1fr;
 }
 
 .app-wrapper-content {
   grid-area: b;
   background-color: darkgoldenrod;
-}
-
-.active {
-  color: gold;
 }

@@ -1,14 +1,19 @@
 .nav {
     grid-area: n;
     background-color: chartreuse;
+    padding: 10px;
 }
 
 .item a{
     color: blue;
+    text-decoration: none;
+    cursor: cell;
 }
 
 .item a.active{
+    border-radius: 10px;
     color: gold;
+    background-color: darkred;
 }
 
 

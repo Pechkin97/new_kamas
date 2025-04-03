@@ -1,0 +1,25 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.dialogsNames {
+    padding: 10px;
+}
+
+.dialogsNames .active {
+    color: gold;
+}
+
+.dialogsNamesItem {
+    color: blue;
+}
+
+.dialogsMassages {
+    padding: 10px;
+
+}
+
+.dialogsMassagesItem {
+
+}
