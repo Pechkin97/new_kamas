@@ -1,23 +1,7 @@
 import React from 'react';
 import s from "./Dialogs.module.css"
-import {NavLink} from "react-router-dom";
-
-const DialogsNamesItem = (props: any) => {
-    let path = "/dialogs/" + props.id
-    return (
-        <div className={s.dialogsNamesItem}>
-            <NavLink to={path} className={({isActive}) => isActive ? s.active : ""}>{props.name}</NavLink>
-        </div>
-    )
-}
-
-const DialogsMassagesItem = (props: any) => {
-    return (
-        <div className={s.dialogsMassagesItem}>
-            {props.massage}
-        </div>
-    )
-}
+import DialogsNamesItem from "./DialogsNames/DialogsNames";
+import DialogsMassagesItem from "./DialogsMassages/DialogsMassages";
 
 const Dialogs = () => {
 
@@ -30,16 +14,16 @@ const Dialogs = () => {
         {id: 6, name: 'Pavel'}
     ]
 
-    let dialogsElements = dialogsData.map((el,pos) =>
-        <DialogsNamesItem key={pos} name={el.name} id={el.id} />
-    )
-
     let massagesData = [
         {id: 1, massage: 'Hello'},
         {id: 2, massage: 'I am learning React NOW!'},
         {id: 3, massage: 'So good'},
         {id: 4, massage: 'Be happy )'}
     ]
+
+    let dialogsElements = dialogsData.map((el,pos) =>
+        <DialogsNamesItem key={pos} name={el.name} id={el.id} />
+    )
 
     let DialogsMassagesElemets = massagesData.map((el,pos) =>
         <DialogsMassagesItem key={pos} massage={el.massage}/>
