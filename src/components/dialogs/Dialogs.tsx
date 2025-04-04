@@ -3,29 +3,13 @@ import s from "./Dialogs.module.css"
 import DialogsNamesItem from "./DialogsNames/DialogsNames";
 import DialogsMassagesItem from "./DialogsMassages/DialogsMassages";
 
-const Dialogs = () => {
+const Dialogs = (props:any) => {
 
-    let dialogsData = [
-        {id: 1, name: 'Peter'},
-        {id: 2, name: 'Andrey'},
-        {id: 3, name: 'Jack'},
-        {id: 4, name: 'Valery'},
-        {id: 5, name: 'Nikolay'},
-        {id: 6, name: 'Pavel'}
-    ]
-
-    let massagesData = [
-        {id: 1, massage: 'Hello'},
-        {id: 2, massage: 'I am learning React NOW!'},
-        {id: 3, massage: 'So good'},
-        {id: 4, massage: 'Be happy )'}
-    ]
-
-    let dialogsElements = dialogsData.map((el,pos) =>
+    let dialogsElements = props.massages.dialogsData.map((el: {name:string, id:number },pos:number) =>
         <DialogsNamesItem key={pos} name={el.name} id={el.id} />
     )
 
-    let DialogsMassagesElemets = massagesData.map((el,pos) =>
+    let DialogsMassagesElemets = props.massages.massagesData.map((el:{massage:string, id:number },pos:number) =>
         <DialogsMassagesItem key={pos} massage={el.massage}/>
     )
 
