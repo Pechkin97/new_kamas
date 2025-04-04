@@ -10,7 +10,7 @@ function App(props: any) {
     return (
         <div className="app-wrapper">
             <Header/>
-            <NavBar/>
+            <NavBar sidebar={props.appState.sidebar}/>
             <div className="app-wrapper-content">
                 <Routes>
                     <Route path='/dialogs/*' element={<Dialogs massages={props.appState.massages}/>}/>
