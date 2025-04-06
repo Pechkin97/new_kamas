@@ -5,7 +5,7 @@ const BestFriends = (props: any) => {
     return (
         <div className={s.item}>
             <div>
-                <img src={props.userAvatar} alt={props.key}/>
+                <img src={props.userAvatar} alt={props.userAvatar}/>
             </div>
             <div>
                 {props.userName}

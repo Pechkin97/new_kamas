@@ -11,7 +11,9 @@ const DialogsMassagesItem = (props: any) => {
 
     return (
 
-        <Route path={`/dialogs/${props.name}`} element={<div> {massagesList}</div>}/>
+        <div>
+            {massagesList}
+        </div>
 
     )
 }
