@@ -1,9 +1,3 @@
-let dialogs = {
-
-}
-
-
-
 
 let state = {
     massages: {

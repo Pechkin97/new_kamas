@@ -2,16 +2,16 @@ import React from 'react';
 import s from "./Dialogs.module.css"
 import DialogsNamesItem from "./DialogsNames/DialogsNames";
 import DialogsMassagesItem from "./DialogsMassages/DialogsMassages";
-import {Routes} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 
 const Dialogs = (props: any) => {
 
-    let dialogsElements = props.massages.dialogsData.map((el: { name: string, id: number }, pos: number) =>
+    let dialogsElements = props.massages.dialogsData.map((el: { id: number, name: string, avatar: string, massagesData: object}, pos: number) =>
         <DialogsNamesItem key={pos} name={el.name} id={el.id}/>
     )
 
-    let DialogsMassagesElemets = props.massages.massagesData.map((el: { massage: string, id: number }, pos: number) =>
-        <DialogsMassagesItem key={pos} massage={el.massage}/>
+    let DialogsMassagesElements = props.massages.dialogsData.map((el: { id: number, name: string, avatar: string, massagesData: object}, pos: number) =>
+        <Route path={`/dialogs/${el.name}`} element={<DialogsMassagesItem key={pos} name={el.name} avatar={el.avatar} massagesData={el.massagesData}/>}/>
     )
 
     return (
@@ -22,7 +22,7 @@ const Dialogs = (props: any) => {
             </div>
             <div className={s.dialogsMassages}>
                 <Routes>
-                    {DialogsMassagesElemets}
+                    {DialogsMassagesElements}
                 </Routes>
             </div>
         </div>
