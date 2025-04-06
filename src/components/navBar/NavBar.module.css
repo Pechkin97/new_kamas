@@ -2,8 +2,25 @@
     grid-area: n;
     background-color: chartreuse;
     padding: 10px;
+    display: grid;
+    max-height: 400px;
+    grid-template-rows: repeat(3, 1fr);
+    row-gap: 10px;
+    justify-content: start
 }
 
+
+.newMassages {
+    display: grid;
+    column-gap: 5px;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-radius: 10px;
+}
+
+.bestFriends {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+}
 .item a{
     color: blue;
     text-decoration: none;
@@ -16,4 +33,11 @@
     background-color: darkred;
 }
 
+.item img{
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    object-position: 50% 50%;
+    border-radius: 10px;
+}
 
