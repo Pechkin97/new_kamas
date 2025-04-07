@@ -5,7 +5,7 @@ import ProfileInfo from "./myPost/ProfileInfo/ProfileInfo";
 
 const Profile = (props:any) => {
     return (
-        <div>
+        <div className={s.profile}>
             <ProfileInfo/>
             <MyPost profile={props.profile}/>
         </div>

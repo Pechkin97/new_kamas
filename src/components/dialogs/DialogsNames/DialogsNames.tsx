@@ -6,7 +6,11 @@ const DialogsNamesItem = (props: any) => {
     let path = "/dialogs/" + props.name
     return (
         <div className={s.dialogsNamesItem}>
-            <NavLink to={path} className={({isActive}) => isActive ? s.active : ""}>{props.name}</NavLink>
+            <NavLink to={path}>
+                {({isActive}) => (
+                <div className={isActive ? s.active : ""}>{props.name}</div>
+                    )}
+            </NavLink>
         </div>
     )
 }

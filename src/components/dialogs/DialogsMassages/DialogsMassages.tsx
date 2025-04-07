@@ -1,5 +1,4 @@
 import React from 'react';
-import s from "./../Dialogs.module.css"
 import DialogsMassagesOneItem from "./DialogsMassagesOneitem/DialogsMassagesOneItem";
 
 const DialogsMassagesItem = (props: any) => {
@@ -11,7 +10,6 @@ const DialogsMassagesItem = (props: any) => {
     return (
 
         <div>
-            Hello
             {props.id}
             {massagesList}
         </div>

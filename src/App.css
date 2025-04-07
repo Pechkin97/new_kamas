@@ -1,22 +1,64 @@
-{box-sizing: border-box; /* Чёткость в размерах */
-padding: 0; /* Без лишних нагрузок */
-margin: 0;}
+{
+    box-sizing: border-box
+;
+    padding: 0
+;
+    margin: 0
+;
+    color: white
+;
+}
 
 .app-wrapper {
-  display: grid;
-  min-height: 98vh;
-  width: 98vw;
-  padding-block: 1vh;
-  padding-inline: 1vw;
-  grid-gap: 1vh;
-  grid-template-areas:
+    display: grid;
+    height: 98vh;
+    width: 98vw;
+    padding-block: 1vh;
+    padding-inline: 1vw;
+    grid-gap: 1vh;
+    grid-template-areas:
           "h h"
           "n b";
-  grid-template-rows: 100px 1fr;
-  grid-template-columns: 100px 1fr;
+    grid-template-rows: 70px 1fr;
+    grid-template-columns: 110px 1fr;
+    background-color: Gainsboro;
+    color: white;
+    font-family: Comic Sans MS, Comic Sans, cursive;
 }
 
 .app-wrapper-content {
-  grid-area: b;
-  background-color: darkgoldenrod;
+    grid-area: b;
+    color: white;
+    background-color: black;
+    border-radius: 25px;
+    display: grid;
+    height: calc(95vh - 90px);
+    overflow: auto;
+    padding: 10px;
+}
+
+a {
+    height: 100%;
+    color: white;
+    text-decoration: none;
+    cursor: cell;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f0f0f0;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #6a11cb, #2575fc);
+    border-radius: 10px;
+    border: 2px solid #f0f0f0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #5f0acb, #1a5ffc);
 }

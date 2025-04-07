@@ -5,6 +5,7 @@ const DialogsMassagesOneItem = (props: any) => {
     return (
         <div>
             {props.author}
+            {': '}
             {props.massage}
         </div>
     )

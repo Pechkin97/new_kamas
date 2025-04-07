@@ -5,6 +5,9 @@ import Header from "./components/header/Header";
 import NavBar from "./components/navBar/NavBar";
 import Profile from "./components/profile/Profile";
 import Dialogs from "./components/dialogs/Dialogs";
+import News from "./components/News/News";
+import Music from "./components/Music/Music";
+import Settings from "./components/Settings/Settings";
 
 function App(props: any) {
     return (
@@ -14,7 +17,10 @@ function App(props: any) {
             <div className="app-wrapper-content">
                 <Routes>
                     <Route path='/dialogs/*' element={<Dialogs massages={props.appState.massages}/>}/>
-                    <Route path='/profile' element={<Profile profile={props.appState.profile}/>}/>
+                    <Route path='/profile/*' element={<Profile profile={props.appState.profile}/>}/>
+                    <Route path='/News/*' element={<News/>}/>
+                    <Route path='/Music/*' element={<Music/>}/>
+                    <Route path='/Settings/*' element={<Settings/>}/>
                 </Routes>
             </div>
         </div>

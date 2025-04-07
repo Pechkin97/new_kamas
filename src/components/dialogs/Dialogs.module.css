@@ -1,22 +1,33 @@
 .dialogs {
     display: grid;
-    grid-template-columns: 2fr 10fr;
+    align-content: start;
+    grid-template-columns: 3fr 10fr;
 }
 
 .dialogsNames {
-    padding: 10px;
+    padding: 20px;
+    display: grid;
+    grid-gap: 5px;
 }
 
 
-
-.dialogsNamesItem a{
-    color: blue;
+.dialogsNamesItem a {
     text-decoration: none;
+    gap: 10px;
 }
 
-.dialogsNamesItem a.active{
-    color: gold;
+.dialogsNamesItem a.active {
+    color: black;
     text-decoration: none;
+    background-color: white;
+}
+
+.active {
+    color: black;
+    text-decoration: none;
+    background-color: white;
+    padding-left: 10px;
+    border-radius: 15px;
 }
 
 .dialogsMassages {
