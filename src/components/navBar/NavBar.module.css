@@ -8,6 +8,7 @@
     overflow: auto;
     grid-template-rows: repeat(3, 1fr);
     justify-content: start;
+    grid-gap: 5vh;
 
 }
 

@@ -26,6 +26,12 @@ const Dialogs = (props: any) => {
                                                  Pururu/>}/>
     )
 
+    let newMassageElement = React.createRef<HTMLTextAreaElement>();
+
+    let addMassage = () => {
+        let text = (newMassageElement.current as HTMLTextAreaElement).value;
+        alert(text);
+    };
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsNames}>
@@ -39,6 +45,15 @@ const Dialogs = (props: any) => {
                 <Routes>
                     {DialogsMassagesElements}
                 </Routes>
+                <div>
+                    <textarea ref={newMassageElement}/>
+                </div>
+                <div>
+                    <button onClick={() => {
+                        addMassage()
+                    }}>Add Massage
+                    </button>
+                </div>
             </div>
         </div>
     )
