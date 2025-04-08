@@ -16,7 +16,6 @@ const MyPost = (props: any) => {
 
     let addPost = () => {
         let text = (newPostElement.current as HTMLTextAreaElement).value;
-        debugger;
         props.addPost(text);
     };
 

@@ -1,3 +1,5 @@
+import {renderApp} from "../render";
+
 let state = {
     massages: {
         dialogsData: [
@@ -111,8 +113,8 @@ export let addPost = (postMassage: string) => {
         massage: postMassage,
         likesCount: 0,
     };
-    debugger;
     state.profile.postsData.push(newPost);
+    renderApp(state, addPost)
 };
 
 
