@@ -1,6 +1,7 @@
 import React from 'react';
 import s from "./myPost.module.css"
 import Post from "./post/post";
+import {updateNewPostText} from "../../../redux/state";
 
 const MyPost = (props: any) => {
 
@@ -15,15 +16,20 @@ const MyPost = (props: any) => {
     let newPostElement = React.createRef<HTMLTextAreaElement>();
 
     let addPost = () => {
-        let text = (newPostElement.current as HTMLTextAreaElement).value;
-        props.addPost(text);
+        props.addPost();
     };
+
+    let onPostChange = () => {
+        let text = (newPostElement.current as HTMLTextAreaElement).value;
+        props.updateNewPostText(text);
+
+    }
 
     return (
         <div className={s.myPost}>
             <h5>My post</h5>
             <div>
-                <textarea ref={newPostElement}></textarea>
+                <textarea onChange={onPostChange} ref={newPostElement} value={props.profile.newPostText}/>
             </div>
             <div>
                 <button onClick={() => {

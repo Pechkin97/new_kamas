@@ -62,7 +62,8 @@ let state = {
             {id: 3, massage: "Гип-гип, ура!", likesCount: 0},
             {id: 4, massage: "Хочу на страйкбол", likesCount: 0},
             {id: 5, massage: "Хус... ро... да!", likesCount: 2},
-        ]
+        ],
+        newPostText: "My second text!"
     },
     sidebar: {
         navigation: [
@@ -106,16 +107,21 @@ let state = {
     }
 }
 
-export let addPost = (postMassage: string) => {
+export let addPost = () => {
 
     let newPost = {
         id: 6,
-        massage: postMassage,
+        massage: state.profile.newPostText,
         likesCount: 0,
     };
     state.profile.postsData.push(newPost);
-    renderApp(state, addPost)
+    state.profile.newPostText = '';
+    renderApp(state, addPost, updateNewPostText)
 };
 
+export let updateNewPostText = (newText: any) => {
+    state.profile.newPostText = newText;
+    renderApp(state, addPost, updateNewPostText)
+}
 
 export default state
