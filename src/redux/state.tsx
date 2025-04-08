@@ -1,4 +1,6 @@
-import {renderApp} from "../render";
+let renderApp = ()=>{
+    console.log('Ahuna matata!')
+}
 
 let state = {
     massages: {
@@ -116,12 +118,15 @@ export let addPost = () => {
     };
     state.profile.postsData.push(newPost);
     state.profile.newPostText = '';
-    renderApp(state, addPost, updateNewPostText)
+    renderApp()
 };
 
 export let updateNewPostText = (newText: any) => {
     state.profile.newPostText = newText;
-    renderApp(state, addPost, updateNewPostText)
+    renderApp()
 }
 
+export let subscribe = (observer:any) =>{
+    renderApp = observer
+}
 export default state

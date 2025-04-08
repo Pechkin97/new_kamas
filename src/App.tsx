@@ -16,6 +16,7 @@ function App(props: any) {
             <NavBar sidebar={props.appState.sidebar}/>
             <div className="app-wrapper-content">
                 <Routes>
+                    <Route path='/' element={<div> Hello world! </div>}/>
                     <Route path='/dialogs/*' element={<Dialogs massages={props.appState.massages}/>}/>
                     <Route path='/profile/*' element={<Profile profile={props.appState.profile}
                                                                addPost={props.addPost}
