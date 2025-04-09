@@ -1,3 +1,6 @@
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
+
 let store = {
     _state: {
         massages: {
@@ -122,7 +125,7 @@ let store = {
     },
 
     dispatch(action:any){ // {type: 'ADD-POST'}
-        if (action.type === "ADD-POST"){
+        if (action.type === ADD_POST){
             let newPost = {
                 id: 6,
                 massage: this._state.profile.newPostText,
@@ -132,11 +135,20 @@ let store = {
             this._state.profile.newPostText = '';
             this._callSub(this._state)
         }
-        else if (action.type === "UPDATE-NEW-POST-TEXT"){
-            this._state.profile.newPostText = action.newText;
-            this._callSub(this._state)
+        else {
+            if (action.type === UPDATE_NEW_POST_TEXT){
+                        this._state.profile.newPostText = action.newText;
+                        this._callSub(this._state)
+                    }
         }
     }
 }
+
+export const addPostActionCreator = () => (
+    {type: ADD_POST}
+)
+export const updateNewPostTextActionCreator = (text: string) => (
+    {type: UPDATE_NEW_POST_TEXT, newText: text}
+)
 
 export default store
