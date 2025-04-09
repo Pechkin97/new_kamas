@@ -110,28 +110,32 @@ let store = {
                 ]
         }
     },
+    _callSub(state:any) {
+        console.log(state)
+    },
+
     getState(){
         return this._state
     },
-    callSub(state:any) {
-        console.log(state)
-    },
-    addPost() {
-        let newPost = {
-            id: 6,
-            massage: this._state.profile.newPostText,
-            likesCount: 0,
-        };
-        this._state.profile.postsData.push(newPost);
-        this._state.profile.newPostText = '';
-        this.callSub(this._state)
-    },
-    updateNewPostText(newText: any) {
-        this._state.profile.newPostText = newText;
-        this.callSub(this._state)
-    },
     subscribe(observer: any) {
-        this.callSub = observer
+        this._callSub = observer
+    },
+
+    dispatch(action:any){ // {type: 'ADD-POST'}
+        if (action.type === "ADD-POST"){
+            let newPost = {
+                id: 6,
+                massage: this._state.profile.newPostText,
+                likesCount: 0,
+            };
+            this._state.profile.postsData.push(newPost);
+            this._state.profile.newPostText = '';
+            this._callSub(this._state)
+        }
+        else if (action.type === "UPDATE-NEW-POST-TEXT"){
+            this._state.profile.newPostText = action.newText;
+            this._callSub(this._state)
+        }
     }
 }
 
