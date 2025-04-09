@@ -1,7 +1,6 @@
 import React from 'react';
 import s from "./myPost.module.css"
 import Post from "./post/post";
-import {updateNewPostText} from "../../../redux/state";
 
 const MyPost = (props: any) => {
 
@@ -21,6 +20,7 @@ const MyPost = (props: any) => {
 
     let onPostChange = () => {
         let text = (newPostElement.current as HTMLTextAreaElement).value;
+        debugger
         props.updateNewPostText(text);
 
     }
