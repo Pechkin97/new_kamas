@@ -15,23 +15,23 @@ const Dialogs = (props: any) => {
             <DialogsNamesItem key={pos} name={el.name} id={el.id}/>
     )
 
-    let DialogsMassagesElements = props.massages.dialogsData.map((el: {
+    let dialogsMassagesElements = props.massages.dialogsData.map((el: {
             id: number,
             name: string,
             avatar: string,
             massagesData: object
+            newMassageText: string
         }, pos: number) =>
             <Route path={`/${el.name}`}
-                   element={<DialogsMassagesItem key={pos} name={el.name} avatar={el.avatar} massagesData={el.massagesData}
-                                                 Pururu/>}/>
+                   element={<DialogsMassagesItem key={pos}
+                                                 name={el.name}
+                                                 avatar={el.avatar}
+                                                 massagesData={el.massagesData}
+                                                 newMassage
+                                                 />}/>
     )
 
-    let newMassageElement = React.createRef<HTMLTextAreaElement>();
 
-    let addMassage = () => {
-        let text = (newMassageElement.current as HTMLTextAreaElement).value;
-        alert(text);
-    };
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsNames}>
@@ -41,19 +41,11 @@ const Dialogs = (props: any) => {
 
             </div>
             <div className={s.dialogsMassages}>
-                Massages in current chat
                 <Routes>
-                    {DialogsMassagesElements}
+                    <Route path={`/`}
+                           element={<div>Dialogs Page</div>}/>
+                    {dialogsMassagesElements}
                 </Routes>
-                <div>
-                    <textarea ref={newMassageElement}/>
-                </div>
-                <div>
-                    <button onClick={() => {
-                        addMassage()
-                    }}>Add Massage
-                    </button>
-                </div>
             </div>
         </div>
     )

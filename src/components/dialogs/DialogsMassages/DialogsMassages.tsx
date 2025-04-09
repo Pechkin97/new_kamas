@@ -7,11 +7,32 @@ const DialogsMassagesItem = (props: any) => {
         <DialogsMassagesOneItem key={pos} author={el.author} massage={el.massage}/>
     )
 
+    let newMassageElement = React.createRef<HTMLTextAreaElement>();
+
+    let addMassage = () => {
+        props.dispatch(addMassageActionCreator())
+    };
+
+    let onMassageChange = () => {
+        let text = (newMassageElement.current as HTMLTextAreaElement).value;
+        props.dispatch(updateNewMassageTextActionCreator(text))
+    }
+
     return (
 
         <div>
-            {props.id}
             {massagesList}
+            <div>
+                <textarea onChange={onMassageChange}
+                          ref={newMassageElement}
+                          value={props.profile.newMassageText}/>
+            </div>
+            <div>
+                <button onClick={() => {
+                    addMassage()
+                }}>Add Massage
+                </button>
+            </div>
         </div>
 
     )
