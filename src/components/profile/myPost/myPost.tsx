@@ -16,12 +16,12 @@ const MyPost = (props: any) => {
     let newPostElement = React.createRef<HTMLTextAreaElement>();
 
     let addPost = () => {
-        props.dispatch(addPostActionCreator());
+        props.dispatch();
     };
 
     let onPostChange = () => {
         let text = (newPostElement.current as HTMLTextAreaElement).value;
-        props.dispatch(updateNewPostTextActionCreator(text));
+        props.dispatch(text);
 
     }
 

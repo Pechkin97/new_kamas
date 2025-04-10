@@ -1,5 +1,8 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
+const ADD_MASSAGE = 'ADD-MASSAGE';
+const UPDATE_NEW_MASSAGE_TEXT = 'UPDATE_NEW_MASSAGE_TEXT';
+
 
 let store = {
     _state: {
@@ -120,19 +123,19 @@ let store = {
                 ]
         }
     },
-    _callSub(state:any) {
+    _callSub(state: any) {
         console.log(state)
     },
 
-    getState(){
+    getState() {
         return this._state
     },
     subscribe(observer: any) {
         this._callSub = observer
     },
 
-    dispatch(action:any){ // {type: 'ADD-POST'}
-        if (action.type === ADD_POST){
+    dispatch(action: any) { // {type: 'ADD-POST'}
+        if (action.type === ADD_POST) {
             let newPost = {
                 id: 6,
                 massage: this._state.profile.newPostText,
@@ -141,21 +144,37 @@ let store = {
             this._state.profile.postsData.push(newPost);
             this._state.profile.newPostText = '';
             this._callSub(this._state)
-        }
-        else {
-            if (action.type === UPDATE_NEW_POST_TEXT){
-                        this._state.profile.newPostText = action.newText;
-                        this._callSub(this._state)
-                    }
+        } else if (action.type === UPDATE_NEW_POST_TEXT) {
+            this._state.profile.newPostText = action.newText;
+            this._callSub(this._state)
+        } else if (action.type === ADD_MASSAGE) {
+            let newMassage = {
+                id: 6,
+                massage: this._state.massages.dialogsData.newMassageText,
+                likesCount: 0,
+            };
+            this._state.massages.dialogsData.massagesData.push(newPost);
+            this._state.massages.dialogsData.newMassageText = '';
+            this._callSub(this._state)
+        } else if (action.type === UPDATE_NEW_MASSAGE_TEXT) {
+            this._state.massages.dialogsData.newMassageText = action.newText;
+            this._callSub(this._state)
         }
     }
 }
+
 
 export const addPostActionCreator = () => (
     {type: ADD_POST}
 )
 export const updateNewPostTextActionCreator = (text: string) => (
     {type: UPDATE_NEW_POST_TEXT, newText: text}
+)
+export const addMassageActionCreator = () => (
+    {type: ADD_MASSAGE}
+)
+export const updateNewMassageTextActionCreator = (text: string) => (
+    {type: UPDATE_NEW_MASSAGE_TEXT, newText: text}
 )
 
 export default store

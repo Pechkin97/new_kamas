@@ -1,5 +1,6 @@
 import React from 'react';
 import DialogsMassagesOneItem from "./DialogsMassagesOneitem/DialogsMassagesOneItem";
+import {addMassageActionCreator, updateNewMassageTextActionCreator} from "../../../redux/state";
 
 const DialogsMassagesItem = (props: any) => {
 
