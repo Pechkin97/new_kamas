@@ -12,48 +12,39 @@ const Dialogs = (props: any) => {
             avatar: string,
             massagesData: object
         }, pos: number) =>
-            <DialogsNamesItem key={pos} name={el.name} id={el.id}/>
+            <DialogsNamesItem key={pos} name={el.name} id={el.id} avatar={el.avatar}/>
     )
 
     let DialogsMassagesElements = props.massages.dialogsData.map((el: {
             id: number,
             name: string,
             avatar: string,
-            massagesData: object
+            massagesData: object,
+            newMassageText: string
         }, pos: number) =>
             <Route path={`/${el.name}`}
-                   element={<DialogsMassagesItem key={pos} name={el.name} avatar={el.avatar} massagesData={el.massagesData}
-                                                 Pururu/>}/>
+                   element={<DialogsMassagesItem
+                       key={pos}
+                       id={el.id}
+                       name={el.name}
+                       massagesData={el.massagesData}
+                       dispatch={props.dispatch}
+                       newMassageText={el.newMassageText}
+                   />}/>
     )
 
-    let newMassageElement = React.createRef<HTMLTextAreaElement>();
 
-    let addMassage = () => {
-        let text = (newMassageElement.current as HTMLTextAreaElement).value;
-        alert(text);
-    };
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsNames}>
                 Chat's
                 {dialogsElements}
-
-
             </div>
             <div className={s.dialogsMassages}>
                 Massages in current chat
                 <Routes>
                     {DialogsMassagesElements}
                 </Routes>
-                <div>
-                    <textarea ref={newMassageElement}/>
-                </div>
-                <div>
-                    <button onClick={() => {
-                        addMassage()
-                    }}>Add Massage
-                    </button>
-                </div>
             </div>
         </div>
     )

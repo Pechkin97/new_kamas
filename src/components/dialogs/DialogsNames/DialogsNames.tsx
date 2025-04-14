@@ -8,11 +8,14 @@ const DialogsNamesItem = (props: any) => {
         <div className={s.dialogsNamesItem}>
             <NavLink to={path}>
                 {({isActive}) => (
-                <div className={isActive ? s.active : ""}>{props.name}</div>
+                    <div className={isActive ? s.active : ""}>
+                        <img src={props.avatar} alt={props.avatar}/>
+                        {props.name}
+                    </div>
                     )}
             </NavLink>
         </div>
-    )
+)
 }
 
 export default DialogsNamesItem;

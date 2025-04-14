@@ -22,8 +22,7 @@ const MyPost = (props: any) => {
     let onPostChange = () => {
         let text = (newPostElement.current as HTMLTextAreaElement).value;
         props.dispatch(updateNewPostTextActionCreator(text));
-
-    }
+    };
 
     return (
         <div className={s.myPost}>

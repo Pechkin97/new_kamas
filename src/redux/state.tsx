@@ -1,5 +1,7 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
+const ADD_MASSAGE = 'ADD-MASSAGE';
+const UPDATE_NEW_MASSAGE_TEXT = 'UPDATE-NEW-MASSAGE-TEXT'
 
 let store = {
     _state: {
@@ -14,30 +16,34 @@ let store = {
                         {id: 2, massage: 'I am learning React NOW!', author: 'Dima'},
                         {id: 3, massage: 'So good', author: 'Dima'},
                         {id: 4, massage: 'Be happy )', author: 'Peter'}
-                    ]
+                    ],
+                    newMassageText: ''
                 },
                 {
                     id: 2, name: 'Andrey', avatar: 'https://shapka-youtube.ru/wp-content/uploads/2021/01/man-ava9.jpg',
                     massagesData: [
                         {id: 1, massage: 'Hello, Andrey', author: 'Dima'},
-                    ]
+                    ],
+                    newMassageText: ''
                 },
                 {
                     id: 3,
                     name: 'Jack',
-                    avatar: 'https://avatars.mds.yandex.net/i?id=f6f9f12c47f70e5ba9a3eceb7a678123_l-5234254-images-thumbs&n=13',
+                    avatar: 'https://avatars.mds.yandex.net/i?id=fc4682639ab090ccab28a452ec8923e04f73a6e1-5220654-images-thumbs&n=13',
                     massagesData: [
                         {id: 1, massage: 'Hello, Jack', author: 'Dima'},
 
-                    ]
+                    ],
+                    newMassageText: ''
                 },
                 {
                     id: 4,
                     name: 'Valery',
-                    avatar: 'https://avatars.mds.yandex.net/i?id=f6f9f12c47f70e5ba9a3eceb7a678123_l-5234254-images-thumbs&n=13',
+                    avatar: 'https://i.pinimg.com/originals/61/ea/8c/61ea8c87b28db7d41452cabe1c1df82d.jpg',
                     massagesData: [
                         {id: 1, massage: 'Hello, Valery', author: 'Dima'},
-                    ]
+                    ],
+                    newMassageText: ''
                 },
                 {
                     id: 5,
@@ -45,7 +51,8 @@ let store = {
                     avatar: 'https://twitchinfo.ru/wp-content/uploads/2020/08/%D0%9A%D0%B0%D0%BA-%D1%81%D0%B4%D0%B5%D0%BB%D0%B0%D1%82%D1%8C-%D0%BF%D0%BE%D1%80%D1%82%D1%80%D0%B5%D1%82-%D0%BF%D0%BE-%D1%84%D0%BE%D1%82%D0%BE%D0%B3%D1%80%D0%B0%D1%84%D0%B8%D0%B8-%D0%90%D0%B2%D0%B0%D1%82%D0%B0%D1%80%D0%BA%D1%83-%D0%B4%D0%BB%D1%8F-Youtube-VK-INSTAGRAMM-TIKTOK-TWITCH-0-12-03-920-1024x576.jpg',
                     massagesData: [
                         {id: 1, massage: 'Hello, Nikolay', author: 'Dima'},
-                    ]
+                    ],
+                    newMassageText: ''
                 },
                 {
                     id: 6,
@@ -53,7 +60,8 @@ let store = {
                     avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUJocHpY6Jzj9xHddXMTNeq753_Mbqc9XbxA&s',
                     massagesData: [
                         {id: 1, massage: 'Hello, Pavel', author: 'Dima'},
-                    ]
+                    ],
+                    newMassageText: ''
                 }
             ],
         }
@@ -113,34 +121,58 @@ let store = {
                 ]
         }
     },
-    _callSub(state:any) {
+    _callSub(state: any) {
         console.log(state)
     },
 
-    getState(){
+    getState() {
         return this._state
     },
     subscribe(observer: any) {
         this._callSub = observer
     },
 
-    dispatch(action:any){ // {type: 'ADD-POST'}
-        if (action.type === ADD_POST){
+    dispatch(action: any) { // {type: 'ADD-POST'}
+        if (action.type === ADD_POST) {
+            const newId = this._state.profile.postsData.length ? this._state.profile.postsData[this._state.profile.postsData.length - 1].id + 1 : 1;
             let newPost = {
-                id: 6,
+                id: newId,
                 massage: this._state.profile.newPostText,
                 likesCount: 0,
             };
             this._state.profile.postsData.push(newPost);
             this._state.profile.newPostText = '';
             this._callSub(this._state)
+        } else if (action.type === UPDATE_NEW_POST_TEXT) {
+            this._state.profile.newPostText = action.newText;
+            this._callSub(this._state)
+        } else if (action.type === UPDATE_NEW_MASSAGE_TEXT) {
+            let newMassageFind = this._state.massages.dialogsData.find(
+                p => p.id === action.id)
+            if (newMassageFind) {
+                newMassageFind.newMassageText = action.newText
+            }
+            this._callSub(this._state)
+        } else if (action.type === ADD_MASSAGE) {
+            let newMassageAdd = this._state.massages.dialogsData.find(
+                p => p.id === action.id)
+
+            if (newMassageAdd) {
+                if (newMassageAdd.newMassageText !== '') {
+                    const newId = newMassageAdd.massagesData.length ? newMassageAdd.massagesData[newMassageAdd.massagesData.length - 1].id + 1 : 1;
+                    let newMassage = {
+                        id: newId,
+                        massage: newMassageAdd.newMassageText,
+                        author: "Dima",
+                    };
+                    newMassageAdd.massagesData.push(newMassage);
+                    newMassageAdd.newMassageText = '';
+                }
+                this._callSub(this._state)
+            }
+
         }
-        else {
-            if (action.type === UPDATE_NEW_POST_TEXT){
-                        this._state.profile.newPostText = action.newText;
-                        this._callSub(this._state)
-                    }
-        }
+
     }
 }
 
@@ -150,5 +182,14 @@ export const addPostActionCreator = () => (
 export const updateNewPostTextActionCreator = (text: string) => (
     {type: UPDATE_NEW_POST_TEXT, newText: text}
 )
+
+export const updateNewMassageTextActionCreator = (text: string, id: number) => (
+    {type: UPDATE_NEW_MASSAGE_TEXT, newText: text, id: id}
+)
+
+export const addMassageActionCreator = (id: number) => (
+    {type: ADD_MASSAGE, id: id}
+)
+
 
 export default store
